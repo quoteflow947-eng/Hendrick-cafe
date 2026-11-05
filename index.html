@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hendrick Café — a neighbourhood café and micro-roastery in Gardens, Cape Town. Specialty coffee, ethical sourcing and slow mornings." />
+  <meta name="theme-color" content="#3E2A1E" />
+  <title>Hendrick Café — Specialty Coffee, Cape Town</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="logo" aria-label="Hendrick Café home">
+        <span class="logo-mark">H</span>
+        <span class="logo-text">Hendrick <em>Café</em></span>
+      </a>
+
+      <nav class="nav" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="cart-button" data-open-cart aria-label="Open cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <span class="eyebrow">Cape Town · Est. 2019</span>
+          <h1>Slow mornings.<br><em>Exceptional</em> coffee.</h1>
+          <p>A neighbourhood café and micro-roastery in Gardens. We roast in small batches, pour with intention, and serve every cup like it's the only one we'll make all day.</p>
+          <div class="hero-actions">
+            <a href="#menu" class="btn btn-primary">Browse the menu</a>
+            <a href="#about" class="btn btn-ghost">Our story</a>
+          </div>
+          <div class="hero-meta">
+            <div><strong>Mon–Fri</strong><span>6:30am – 6pm</span></div>
+            <div><strong>Weekends</strong><span>7am – 5pm</span></div>
+            <div><strong>Find us</strong><span>42 Kloof St, Gardens</span></div>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1400&q=85" alt="Warm interior of Hendrick Café" class="hero-image" />
+          <div class="hero-badge">
+            <span>Roasted locally</span>
+            <strong>Weekly</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MENU ============ -->
+    <section id="menu" class="section menu-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">The Menu</span>
+          <h2>What we're pouring</h2>
+          <p>Every drink is made with our own small-batch roast, ethically sourced beans and milk steamed to order.</p>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="section about-section">
+      <div class="container about-grid">
+        <div class="about-image-wrap">
+          <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1200&q=85" alt="Inside Hendrick Café" />
+        </div>
+        <div class="about-text">
+          <span class="eyebrow">Our Story</span>
+          <h2>A small café with a serious obsession.</h2>
+          <p>Hendrick Café began in 2019 as a two-person roastery on Kloof Street. We wanted to build a place where the coffee was exceptional, the welcome was warm, and the pace was a little slower than the city outside.</p>
+          <p>Today we roast every bean ourselves in small batches, source through ethical South African importers, and train every barista to taste — not just pour. No shortcuts, no burnt espresso, no pre-ground bags sitting on a shelf.</p>
+          <div class="about-stats">
+            <div><strong>2019</strong><span>Founded in Gardens</span></div>
+            <div><strong>12</strong><span>Origins sourced</span></div>
+            <div><strong>Weekly</strong><span>Small-batch roasts</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="section contact-section">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <span class="eyebrow">Visit &amp; Contact</span>
+          <h2>Come say hello.</h2>
+          <p>We're open seven days a week on Kloof Street. Pop in, or reach out — we'd love to hear from you.</p>
+          <ul class="contact-list">
+            <li><strong>Address</strong><span>42 Kloof Street, Gardens, Cape Town, 8001</span></li>
+            <li><strong>Phone</strong><span>+27 21 555 0142</span></li>
+            <li><strong>Email</strong><span>hello@hendrickcafe.co.za</span></li>
+            <li><strong>Hours</strong><span>Mon–Fri 6:30am–6pm · Sat 7am–5pm · Sun 8am–3pm</span></li>
+          </ul>
+        </div>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <label>Name<input type="text" name="name" required placeholder="Your name" /></label>
+          </div>
+          <div class="form-row">
+            <label>Email<input type="email" name="email" required placeholder="you@example.com" /></label>
+          </div>
+          <div class="form-row">
+            <label>Message<textarea name="message" rows="5" required placeholder="How can we help?"></textarea></label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-mark">H</span>
+          <span class="logo-text">Hendrick <em>Café</em></span>
+        </div>
+        <p>Small-batch coffee. Big-hearted hospitality.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Visit</h4>
+        <span>42 Kloof Street</span>
+        <span>Gardens, Cape Town</span>
+        <span>+27 21 555 0142</span>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> Hendrick Café. All rights reserved.</span>
+      <span>Made with care in Cape Town.</span>
+    </div>
+  </footer>
+
+  <!-- ============ CART DRAWER ============ -->
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-header">
+      <h2>Your order</h2>
+      <button class="cart-close" id="cartClose" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">R0.00</span>
+      </div>
+      <p class="cart-note">VAT included. Free delivery on orders over R350.</p>
+      <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to checkout</button>
+    </div>
+  </aside>
+
+  <!-- ============ TOAST ============ -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ============ CHATBOT ============ -->
+  <button class="chat-toggle" id="chatToggle" aria-label="Open chat">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  </button>
+
+  <div class="chat-window" id="chatWindow" aria-hidden="true">
+    <div class="chat-header">
+      <div class="chat-identity">
+        <span class="chat-avatar">☕</span>
+        <div>
+          <strong>Hendrick Assistant</strong>
+          <span class="chat-status"><i></i> Online</span>
+        </div>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Close chat">&times;</button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <form class="chat-form" id="chatForm">
+      <input type="text" id="chatInput" placeholder="Ask about coffee, prices, hours..." autocomplete="off" />
+      <button type="submit" aria-label="Send message">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
