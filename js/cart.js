@@ -1,6 +1,9 @@
-const CART_STORAGE_KEY = 'hendrick-cafe-cart';
+/* Hendrick Café — Shopping Cart */
+console.log('[Hendrick] cart.js loaded');
 
-const Cart = {
+var CART_STORAGE_KEY = 'hendrick-cafe-cart';
+
+var Cart = {
   items: [],
 
   load: function () {
@@ -16,9 +19,7 @@ const Cart = {
   save: function () {
     try {
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(this.items));
-    } catch (err) {
-      /* storage unavailable — cart still works in memory */
-    }
+    } catch (err) {}
   },
 
   add: function (productId) {
@@ -39,10 +40,7 @@ const Cart = {
   },
 
   setQty: function (productId, qty) {
-    if (qty <= 0) {
-      this.remove(productId);
-      return;
-    }
+    if (qty <= 0) { this.remove(productId); return; }
     var item = this.items.find(function (i) { return i.id === productId; });
     if (item) {
       item.qty = qty;
@@ -63,7 +61,6 @@ const Cart = {
   },
 
   render: function () {
-    /* Header badge */
     var countEl = document.getElementById('cartCount');
     var count = this.totalCount();
     if (countEl) {
@@ -71,7 +68,6 @@ const Cart = {
       countEl.style.display = count > 0 ? 'flex' : 'none';
     }
 
-    /* Items list */
     var itemsEl = document.getElementById('cartItems');
     if (!itemsEl) return;
 
@@ -105,7 +101,6 @@ const Cart = {
       }).join('');
     }
 
-    /* Subtotal */
     var subtotalEl = document.getElementById('cartSubtotal');
     if (subtotalEl) subtotalEl.textContent = formatPrice(this.totalPrice());
   }
