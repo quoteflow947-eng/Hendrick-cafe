@@ -1,7 +1,3 @@
-/* =========================================
-   Hendrick Café — Shopping Cart
-   ========================================= */
-
 const CART_STORAGE_KEY = 'hendrick-cafe-cart';
 
 const Cart = {
