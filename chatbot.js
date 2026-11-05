@@ -1,8 +1,3 @@
-/* =========================================
-   Hendrick Café — Rule-Based Chatbot
-   (No external API — pure JavaScript rules)
-   ========================================= */
-
 const ChatBot = {
   initialized: false,
 
