@@ -1,7 +1,3 @@
-/* =========================================
-   Hendrick Café — Product Catalogue
-   ========================================= */
-
 const PRODUCTS = [
   {
     id: 'house-espresso',
