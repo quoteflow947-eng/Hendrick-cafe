@@ -1,20 +1,41 @@
+/* Hendrick Café — App Bootstrap */
+console.log('[Hendrick] main.js loaded');
+
 document.addEventListener('DOMContentLoaded', function () {
 
-  /* ---------- Product grid ---------- */
-  renderProducts(document.getElementById('productGrid'));
+  /* Products (guarded) */
+  try {
+    if (typeof renderProducts === 'function' && typeof PRODUCTS !== 'undefined') {
+      renderProducts(document.getElementById('productGrid'));
+    } else {
+      console.error('[Hendrick] products.js missing or failed to load');
+    }
+  } catch (e) { console.error('[Hendrick] render products failed:', e); }
 
-  /* ---------- Cart ---------- */
-  Cart.load();
-  Cart.render();
+  /* Cart (guarded) */
+  try {
+    if (typeof Cart !== 'undefined') {
+      Cart.load();
+      Cart.render();
+    } else {
+      console.error('[Hendrick] cart.js missing or failed to load');
+    }
+  } catch (e) { console.error('[Hendrick] cart init failed:', e); }
 
-  /* ---------- Chatbot ---------- */
-  ChatBot.init();
+  /* Chatbot (guarded) */
+  try {
+    if (typeof ChatBot !== 'undefined') {
+      ChatBot.init();
+    } else {
+      console.error('[Hendrick] chatbot.js missing or failed to load');
+    }
+  } catch (e) { console.error('[Hendrick] chat init failed:', e); }
 
-  /* ---------- Footer year ---------- */
+  /* Footer year (always runs) */
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---------- Mobile nav toggle ---------- */
+  /* Mobile nav toggle */
   var navToggle = document.getElementById('navToggle');
   var navLinks = document.getElementById('navLinks');
   if (navToggle && navLinks) {
@@ -30,25 +51,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ---------- Cart drawer open/close ---------- */
+  /* Cart drawer */
   var cartDrawer = document.getElementById('cartDrawer');
   var cartBackdrop = document.getElementById('cartBackdrop');
   var cartCloseBtn = document.getElementById('cartClose');
 
   function openCart() {
-    if (cartDrawer) {
-      cartDrawer.classList.add('is-open');
-      cartDrawer.setAttribute('aria-hidden', 'false');
-    }
+    if (cartDrawer) { cartDrawer.classList.add('is-open'); cartDrawer.setAttribute('aria-hidden', 'false'); }
     if (cartBackdrop) cartBackdrop.classList.add('is-open');
     document.body.classList.add('no-scroll');
   }
 
   function closeCart() {
-    if (cartDrawer) {
-      cartDrawer.classList.remove('is-open');
-      cartDrawer.setAttribute('aria-hidden', 'true');
-    }
+    if (cartDrawer) { cartDrawer.classList.remove('is-open'); cartDrawer.setAttribute('aria-hidden', 'true'); }
     if (cartBackdrop) cartBackdrop.classList.remove('is-open');
     document.body.classList.remove('no-scroll');
   }
@@ -59,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (cartCloseBtn) cartCloseBtn.addEventListener('click', closeCart);
   if (cartBackdrop) cartBackdrop.addEventListener('click', closeCart);
 
-  /* ---------- Toast helper ---------- */
+  /* Toast */
   var toastTimer;
   function showToast(msg) {
     var toast = document.getElementById('toast');
@@ -72,25 +87,29 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 2400);
   }
 
-  /* ---------- Delegated clicks: add / qty / remove ---------- */
+  /* Delegated cart clicks */
   document.body.addEventListener('click', function (e) {
     var addBtn = e.target.closest('[data-add-to-cart]');
     if (addBtn) {
       var productId = addBtn.getAttribute('data-add-to-cart');
-      Cart.add(productId);
-      var product = PRODUCTS.find(function (p) { return p.id === productId; });
-      showToast((product ? product.name : 'Item') + ' added to cart');
+      if (typeof Cart !== 'undefined') {
+        Cart.add(productId);
+        var product = (typeof PRODUCTS !== 'undefined')
+          ? PRODUCTS.find(function (p) { return p.id === productId; })
+          : null;
+        showToast((product ? product.name : 'Item') + ' added to cart');
+      }
       return;
     }
 
     var removeBtn = e.target.closest('[data-cart-remove]');
-    if (removeBtn) {
+    if (removeBtn && typeof Cart !== 'undefined') {
       Cart.remove(removeBtn.getAttribute('data-cart-remove'));
       return;
     }
 
     var qtyBtn = e.target.closest('[data-cart-action]');
-    if (qtyBtn) {
+    if (qtyBtn && typeof Cart !== 'undefined') {
       var id = qtyBtn.getAttribute('data-cart-id');
       var action = qtyBtn.getAttribute('data-cart-action');
       var item = Cart.items.find(function (i) { return i.id === id; });
@@ -101,11 +120,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  /* ---------- Checkout button ---------- */
+  /* Checkout button */
   var checkoutBtn = document.getElementById('checkoutBtn');
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', function () {
-      if (Cart.items.length === 0) {
+      if (typeof Cart !== 'undefined' && Cart.items.length === 0) {
         showToast('Your cart is empty — add a coffee first');
         return;
       }
@@ -113,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ---------- Contact form ---------- */
+  /* Contact form */
   var contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
@@ -123,11 +142,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ---------- Escape closes overlays ---------- */
+  /* Escape closes overlays */
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
       closeCart();
-      ChatBot.close();
+      if (typeof ChatBot !== 'undefined') ChatBot.close();
     }
   });
 
