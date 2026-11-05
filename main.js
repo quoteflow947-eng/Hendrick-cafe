@@ -1,7 +1,3 @@
-/* =========================================
-   Hendrick Café — App Bootstrap
-   ========================================= */
-
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- Product grid ---------- */
