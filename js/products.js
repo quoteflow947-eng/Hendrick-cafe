@@ -1,4 +1,7 @@
-const PRODUCTS = [
+/* Hendrick Café — Product Catalogue */
+console.log('[Hendrick] products.js loaded');
+
+var PRODUCTS = [
   {
     id: 'house-espresso',
     name: 'House Espresso',
@@ -73,16 +76,10 @@ const PRODUCTS = [
   }
 ];
 
-/**
- * Format a number as South African rand: R32.00
- */
 function formatPrice(value) {
   return 'R' + Number(value).toFixed(2);
 }
 
-/**
- * Render the product grid into a container element.
- */
 function renderProducts(container) {
   if (!container) return;
   container.innerHTML = PRODUCTS.map(function (p) {
